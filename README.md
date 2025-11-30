@@ -1,4 +1,4 @@
-# BeFit
+# BeFit Application
 
 BeFit is an ASP.NET Core MVC application for tracking exercises and training sessions.
 
@@ -9,14 +9,14 @@ How to run (short)
 PowerShell (from the workspace root):
 
 ```powershell
-Set-Location -Path "C:\Users\enesy\Desktop\BeFit-app"
-# Option A: run on an explicit port (recommended so it does not conflict with other apps)
+Set-Location -Path "C:\Users\userprofile\Desktop\BeFit-app"
+# Option A: Run on a specified port (recommended to avoid conflicts with other applications)
 $env:ASPNETCORE_URLS = "http://localhost:5005"
 dotnet run --project "BeFit\BeFit\BeFit.csproj" --no-launch-profile --configuration Debug
 
-# Then open in your browser: http://localhost:5005/
+# Then open this URL in your browser: http://localhost:5005/
 
-# Option B: run with the default settings and open the URL printed by dotnet
+# Option B: Run with default settings and access the URL displayed by dotnet
 dotnet run --project "BeFit\BeFit\BeFit.csproj"
 ```
 

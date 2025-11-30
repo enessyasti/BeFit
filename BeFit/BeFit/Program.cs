@@ -47,6 +47,10 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3caebf9 (Update project files and README)
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
@@ -90,6 +94,10 @@ using (var scope = app.Services.CreateScope())
     
     if (true)
     {
+<<<<<<< HEAD
+=======
+       
+>>>>>>> 3caebf9 (Update project files and README)
         var desiredTypes = new[]
         {
             "Yoga", "Pilates", "Boxing", "Swimming", "Cycling", "Running",
@@ -111,7 +119,7 @@ using (var scope = app.Services.CreateScope())
             context.SaveChanges();
         }
     
-        // Ensure the member has a variety of training sessions (past and future)
+        
         const int targetSessionCount = 12;
         var existingCount = context.TrainingSessions.Count(ts => ts.UserId == member.Id);
         if (existingCount < targetSessionCount)
@@ -154,7 +162,7 @@ using (var scope = app.Services.CreateScope())
                 var rnd = new Random();
                 foreach (var s in sessionsToAdd)
                 {
-                    // Add 1-3 exercises per session for diversity
+                    
                     int exerciseCount = 1 + rnd.Next(0, 3);
                     for (int j = 0; j < exerciseCount; j++)
                     {
@@ -174,7 +182,7 @@ using (var scope = app.Services.CreateScope())
         }
     }
 
-    // Re-map dates of all member sessions to the week Dec 1-7 with varied daytime hours
+    
     var allMemberSessions = context.TrainingSessions.Where(ts => ts.UserId == member.Id).OrderBy(ts => ts.Id).ToList();
     if (allMemberSessions.Any())
     {

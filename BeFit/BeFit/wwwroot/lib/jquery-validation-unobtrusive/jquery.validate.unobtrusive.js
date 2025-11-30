@@ -11,13 +11,13 @@
 
 (function (factory) {
     if (typeof define === 'function' && define.amd) {
-        // AMD. Register as an anonymous module.
+        // AMD: Register as an anonymous module.
         define("jquery.validate.unobtrusive", ['jquery-validation'], factory);
     } else if (typeof module === 'object' && module.exports) {
-        // CommonJS-like environments that support module.exports     
+        // CommonJS-like environments that support module.exports.
         module.exports = factory(require('jquery-validation'));
     } else {
-        // Browser global
+        // This variable is available globally in the browser.
         jQuery.validator.unobtrusive = factory(jQuery);
     }
 }(function ($) {
@@ -37,7 +37,7 @@
     }
 
     function escapeAttributeValue(value) {
-        // As mentioned on http://api.jquery.com/category/selectors/
+        // Refer to the jQuery API documentation for selectors: http://api.jquery.com/category/selectors/
         return value.replace(/([!"#$%&'()*+,./:;<=>?@\[\\\]^`{|}~])/g, "\\$1");
     }
 
