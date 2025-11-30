@@ -46,3 +46,12 @@ package-lock.json
 
 # Publish output
 */publish/
+
+# Runtime/database artifacts (local)
+BeFit/BeFit/*.db
+BeFit/BeFit/*.db-shm
+BeFit/BeFit/*.db-wal
+
+# Local run logs produced during testing
+befit_run.*
+*.err
