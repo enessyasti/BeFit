@@ -2,10 +2,33 @@
 
 BeFit is an ASP.NET Core MVC application for tracking exercises and training sessions.
 
-This repository contains the project files. To push this project to GitHub:
+This repository is a mirror of the current local workspace. Below are the minimal steps to run the project locally.
 
-1. Create a repository on GitHub (or use the GitHub CLI `gh repo create`).
-2. Add the remote: `git remote add origin <REMOTE_URL>`
-3. Push the main branch: `git push -u origin master`
+How to run (short)
 
-If you want me to create the GitHub repo and push for you, tell me whether you have the GitHub CLI (`gh`) installed or provide the repository URL.
+PowerShell (from the workspace root):
+
+```powershell
+Set-Location -Path "C:\Users\enesy\Desktop\BeFit-app"
+# Option A: run on an explicit port (recommended so it does not conflict with other apps)
+$env:ASPNETCORE_URLS = "http://localhost:5005"
+dotnet run --project "BeFit\BeFit\BeFit.csproj" --no-launch-profile --configuration Debug
+
+# Then open in your browser: http://localhost:5005/
+
+# Option B: run with the default settings and open the URL printed by dotnet
+dotnet run --project "BeFit\BeFit\BeFit.csproj"
+```
+
+Stop the running app by finding its PID and stopping it, for example:
+
+```powershell
+Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -match 'BeFit\\BeFit\\BeFit.csproj' } | Select-Object ProcessId, CommandLine
+Stop-Process -Id <pid>
+```
+
+Notes
+- If you use port 5005 make sure it's free (no other service listening). If binding fails because the port is in use, change the port (e.g. 5006) by adjusting `ASPNETCORE_URLS`.
+- The local SQLite DB and runtime logs are intentionally ignored in `.gitignore`.
+
+If you want, I can add a GitHub Actions workflow to build this project on every push.
