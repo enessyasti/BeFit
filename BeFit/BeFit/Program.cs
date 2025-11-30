@@ -12,7 +12,7 @@ var culture = new CultureInfo("en-US");
 CultureInfo.DefaultThreadCurrentCulture = culture;
 CultureInfo.DefaultThreadCurrentUICulture = culture;
 
-// Add services to the container.
+
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(connectionString));
@@ -25,7 +25,6 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseMigrationsEndPoint();
@@ -33,7 +32,6 @@ if (app.Environment.IsDevelopment())
 else
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -49,7 +47,6 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
 
-// Seed roles, demo users, exercise types, and sample sessions for variety
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
@@ -77,7 +74,6 @@ using (var scope = app.Services.CreateScope())
             var createResult = userManager.CreateAsync(user, password).GetAwaiter().GetResult();
             if (!createResult.Succeeded)
             {
-                // If creation failed due to password policy etc., you can adjust the password or policies.
                 // For now, just skip.
             }
         }
@@ -91,10 +87,9 @@ using (var scope = app.Services.CreateScope())
     var admin = EnsureUser("admin@fitverse.com", "A!dm1n.2025", "Admin");
     var member = EnsureUser("member@fitverse.com", "M3mb3r.2025", "User");
 
-    // Always ensure desired exercise types and session diversity
+    
     if (true)
     {
-        // Ensure desired exercise types exist (run every time to add missing ones)
         var desiredTypes = new[]
         {
             "Yoga", "Pilates", "Boxing", "Swimming", "Cycling", "Running",
